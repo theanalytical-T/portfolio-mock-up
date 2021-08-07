@@ -18,7 +18,7 @@
 .home-name {
   font-size: 5rem;
   padding-bottom: 1rem;
-  margin-top: 1rem;
+  margin-bottom: 1rem;
   border-bottom: 2px solid #fff;
 }
 
@@ -27,10 +27,162 @@
   font-weight: 700;
 }
 
+.menu-btn {
+  position: absolute;
+  z-index: 1;
+  right: 1rem;
+  top: 1rem;
+  height: 20px;
+  width: 50px;
+  cursor: pointer;
+  -webkit-transition: all 0.175s ease-in-out;
+  transition: all 0.175s ease-in-out;
+}
+
+.menu-btn-burger {
+  position: absolute;
+  right: 0;
+  top: .5rem;
+  width: 28px;
+  height: 3px;
+  background: #fff;
+  -webkit-transition: all 0.175s ease-in-out;
+  transition: all 0.175s ease-in-out;
+}
+
+.menu-btn-burger::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  width: 28px;
+  height: 3px;
+  background: #fff;
+  -webkit-transition: all 0.175s ease-in-out;
+  transition: all 0.175s ease-in-out;
+}
+
+.menu-btn-burger::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  width: 20px;
+  height: 4px;
+  background: #fff;
+  -webkit-transition: all 0.175s ease-in-out;
+  transition: all 0.175s ease-in-out;
+}
+
+.menu-btn-burger.open {
+  -webkit-transform: rotate(720deg);
+          transform: rotate(720deg);
+  background: transparent;
+}
+
+.menu-btn-burger.open::before {
+  -webkit-transform: rotate(45deg) translate(5px, 7px);
+          transform: rotate(45deg) translate(5px, 7px);
+}
+
+.menu-btn-burger.open::after {
+  width: 28px;
+  -webkit-transform: rotate(-45deg) translate(5px, -8px);
+          transform: rotate(-45deg) translate(5px, -8px);
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  opacity: 0.98;
+  visibility: hidden;
+}
+
+.nav.open {
+  visibility: visible;
+}
+
+.nav .menu-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  background: #272727;
+  list-style-type: none;
+  padding-right: 1rem;
+  padding-top: 50%;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-transition: all 0.175s ease-in-out;
+  transition: all 0.175s ease-in-out;
+}
+
+.nav .menu-nav.open {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.nav .menu-nav-item {
+  -webkit-transform: translateX(100vw);
+          transform: translateX(100vw);
+  -webkit-transition: all 0.175s ease-in-out;
+  transition: all 0.175s ease-in-out;
+}
+
+.nav .menu-nav-item.open {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+.nav .menu-nav-item.active > a {
+  color: #ff652f;
+}
+
+.nav .menu-nav-link {
+  display: inline-block;
+  font-size: 2rem;
+  text-transform: uppercase;
+  padding: 2rem 0;
+  font-weight: 300;
+  -webkit-transition: all 0.175s ease-in-out;
+  transition: all 0.175s ease-in-out;
+}
+
+.nav .menu-nav-link:hover {
+  color: #ff652f;
+}
+
+.menu-nav-item:nth-child(1) {
+  -webkit-transition-delay: 0.28s;
+          transition-delay: 0.28s;
+}
+
+.menu-nav-item:nth-child(2) {
+  -webkit-transition-delay: 0.38s;
+          transition-delay: 0.38s;
+}
+
+.menu-nav-item:nth-child(3) {
+  -webkit-transition-delay: 0.48s;
+          transition-delay: 0.48s;
+}
+
+.menu-nav-item:nth-child(4) {
+  -webkit-transition-delay: 0.58s;
+          transition-delay: 0.58s;
+}
+
 body {
   background: -webkit-gradient(linear, left top, right top, from(rgba(39, 39, 39, 0.9)), to(rgba(39, 39, 39, 0.3))), url("../img/model-1.jpg") center top;
   background: linear-gradient(to right, rgba(39, 39, 39, 0.9), rgba(39, 39, 39, 0.3)), url("../img/model-1.jpg") center top;
-  background-size: cover;
   color: #fff;
   height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -76,7 +228,7 @@ main .social-icons a:hover {
 
 footer {
   font-size: 1rem;
-  position: fyyixed;
+  position: fixed;
   bottom: 0.4rem;
   right: 1rem;
   text-align: right;
